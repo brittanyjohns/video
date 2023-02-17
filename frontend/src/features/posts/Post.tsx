@@ -3,13 +3,13 @@ import ButtonGroup from "./ButtonGroup";
 
 function Post(props: any) {
   const [title, setTitle] = useState(props.post.title);
-  const [body, setBody] = useState(props.post.body);
+  const [body, setBody] = useState(JSON.stringify(props.post.body.body));
   const [isEditing, setIsEditing] = useState(
     props.postToEdit === props.post.id
   );
-  //   useEffect(() => {
-  //     setIsEditing(props.postToEdit === props.post.id);
-  //   }, [props.postToEdit, props.post.id]);
+  useEffect(() => {
+    setIsEditing(props.postToEdit === props.post.id);
+  }, [props.postToEdit, props.post.id]);
 
   function submitHandler(e: any) {
     e.preventDefault();

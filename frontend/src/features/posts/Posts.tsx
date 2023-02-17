@@ -2,7 +2,7 @@ import { AnyAction } from "@reduxjs/toolkit";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import { AppThunk } from "../../app/store";
+import PageContainer from "../../components/PageContainer";
 import Post from "./Post";
 import PostForm from "./PostForm";
 import {
@@ -44,25 +44,29 @@ function Posts() {
     contents = <div>{status}</div>;
   } else {
     contents = (
-      <div className="card">
-        <div className="card-body">
-          <h3>{status}</h3>
+      <div className="col-md-12">
+        <div className="col-md-6 post-form">
           <PostForm />
-          {posts &&
-            posts.length > 0 &&
-            posts.map((post) => {
-              return (
-                <div key={post.id} style={{ margin: "5em" }}>
-                  <Post
-                    dispatch={dispatch}
-                    post={post}
-                    toggleEditForm={() => toggleEditForm(post.id)}
-                    postToEdit={postToEdit}
-                    submitEdit={submitEdit}
-                  />
-                </div>
-              );
-            })}
+        </div>
+        <div className="card">
+          <div className="card-body">
+            <PageContainer />
+            {posts &&
+              posts.length > 0 &&
+              posts.map((post) => {
+                return (
+                  <div key={post.id} style={{ margin: "5em" }}>
+                    <Post
+                      dispatch={dispatch}
+                      post={post}
+                      toggleEditForm={() => toggleEditForm(post.id)}
+                      postToEdit={postToEdit}
+                      submitEdit={submitEdit}
+                    />
+                  </div>
+                );
+              })}
+          </div>
         </div>
       </div>
     );

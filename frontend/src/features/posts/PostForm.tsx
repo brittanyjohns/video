@@ -25,9 +25,9 @@ function PostForm() {
   }
 
   return (
-    <div>
+    <div className="">
       <h1>PostForm</h1>
-      <form>
+      <form className="">
         <input
           type="text"
           className="form-control text-start"
